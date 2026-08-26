@@ -21,15 +21,22 @@ import {
 } from "@/components/ui/sidebar";
 import { startLogin } from "@/const";
 import { useIsMobile } from "@/hooks/useMobile";
-import { LayoutDashboard, LogOut, PanelLeft, Users } from "lucide-react";
+import { Activity, BookOpenCheck, Bot, Boxes, LayoutDashboard, ListChecks, LogOut, PanelLeft, ScrollText, Settings, Warehouse } from "lucide-react";
 import { CSSProperties, useEffect, useRef, useState } from "react";
 import { useLocation } from "wouter";
 import { DashboardLayoutSkeleton } from './DashboardLayoutSkeleton';
 import { Button } from "./ui/button";
 
 const menuItems = [
-  { icon: LayoutDashboard, label: "Page 1", path: "/" },
-  { icon: Users, label: "Page 2", path: "/some-path" },
+  { icon: LayoutDashboard, label: "Control Room", path: "/" },
+  { icon: Boxes, label: "Catalog", path: "/catalog" },
+  { icon: Warehouse, label: "Inventory", path: "/inventory" },
+  { icon: ListChecks, label: "Listing Desk", path: "/listings" },
+  { icon: ScrollText, label: "Activity", path: "/activity" },
+  { icon: Activity, label: "Exceptions", path: "/exceptions" },
+  { icon: Bot, label: "Profiles", path: "/profiles" },
+  { icon: Settings, label: "Controls", path: "/controls" },
+  { icon: BookOpenCheck, label: "Credits", path: "/credits" },
 ];
 
 const SIDEBAR_WIDTH_KEY = "sidebar-width";
@@ -168,8 +175,9 @@ function DashboardLayoutContent({
               </button>
               {!isCollapsed ? (
                 <div className="flex items-center gap-2 min-w-0">
-                  <span className="font-semibold tracking-tight truncate">
-                    Navigation
+                  <span className="flex items-center gap-2 font-semibold tracking-tight truncate">
+                    <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-slate-950 text-[10px] font-bold tracking-[0.12em] text-teal-200">CL</span>
+                    <span>LLC Crosslisting OS</span>
                   </span>
                 </div>
               ) : null}
