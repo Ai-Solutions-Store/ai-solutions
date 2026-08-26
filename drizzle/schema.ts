@@ -119,6 +119,7 @@ export const credentialConnections = mysqlTable(
     id: int("id").autoincrement().primaryKey(),
     channelId: int("channelId").notNull(),
     secretKeyName: varchar("secretKeyName", { length: 128 }).notNull(),
+    secretRef: varchar("secretRef", { length: 512 }),
     configured: boolean("configured").default(false).notNull(),
     lastVerifiedAt: timestamp("lastVerifiedAt"),
     lastVerificationStatus: mysqlEnum("lastVerificationStatus", ["not_checked", "valid", "invalid", "unavailable"])

@@ -6,6 +6,7 @@ import {
   approvalRequests,
   channelListings,
   channelSaleEvents,
+  credentialConnections,
   exceptionQueue,
   InsertUser,
   inventoryRecords,
@@ -475,6 +476,16 @@ export async function listOpenExceptions() {
   const db = await getDb();
   if (!db) return [];
   return db.select().from(exceptionQueue).where(eq(exceptionQueue.status, "open")).orderBy(desc(exceptionQueue.createdAt)).limit(50);
+}
+
+export async function persistEbayRefreshTokenReference(secretRef: string) {
+  const db = await getDb();
+  if (!db) throw new Error("Database connection is unavailable.");
+  await ensureMarketplaceChannels();
+  const [channel] = await db.select().from(marketplaceChannels).where(eq(marketplaceChannels.code, "ebay")).limit(1);
+  if (!channel) throw new Error("eBay channel is unavailable.");
+  await db.insert(credentialConnections).values({ channelId: channel.id, secretKeyName: "EBAY_REFRESH_TOKEN", secretRef, configured: true, lastVerificationStatus: "unavailable" }).onDuplicateKeyUpdate({ set: { secretRef, configured: true, lastVerificationStatus: "unavailable", lastVerifiedAt: new Date() } });
+  await db.insert(activityLogs).values({ category: "system", action: "ebay_refresh_token_stored_server_side", subjectType: "channel", subjectId: channel.id, correlationId: `ebay-oauth-${Date.now()}`, outcome: "succeeded", details: { storage: "encrypted_server_blob" } });
 }
 
 export async function requestListingApproval(listingId: number, actorUserId: number) {

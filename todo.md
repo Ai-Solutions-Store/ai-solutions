@@ -41,3 +41,8 @@
 - [x] Create and decide approval requests with correlation IDs, then display grouped activity, approval, and exception records together.
 - [x] Wire listing approval requests and decisions into the dashboard, then include complete approval history and system events in each correlation group.
 - [x] Reuse one correlation ID across listing previews, exceptions, approval requests, approval decisions, and system validation events.
+- [ ] Validate the production eBay OAuth refresh-token exchange with the required LLC-owned Sell API scopes before enabling the adapter.
+- [ ] Complete the production eBay refresh-token consent flow through the authorized account session without exposing account credentials or tokens in chat.
+- [x] Add a server-side eBay OAuth callback that validates state and exchanges a production authorization code for a refresh token without returning it to the browser.
+- [ ] Configure the matching production eBay Redirect URL and use the generated RuName to complete the seller consent flow.
+- [ ] Register the deployment-hosted LLC Crosslisting OS callback URL as the production eBay Redirect URL; retain the Square site only as the public application-information link.
