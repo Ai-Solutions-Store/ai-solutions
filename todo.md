@@ -52,10 +52,10 @@
 - [x] Revise and redeliver the Raycast prompt with conflict-safe Paperclip/Hermes integration guidance.
 - [x] Add Sentry-style service health semantics to the local setup prompt: distinguish reachability, identity, write health, and wrong-service responses.
 - [x] Add Redis MISCONF/read-only and closed-port handling to the local smoke-test and rollback rules.
-- [ ] Add presence-only checks for local `.env`, Windows environment variables, and secure project configuration, reporting variable names and source location without values.
-- [ ] Instruct Raycast to reuse existing configured credentials and stop before issuing replacements unless a named value is missing or invalid.
-- [ ] Correct the local setup command names to match the repository scripts and require operator confirmation before any database migration.
-- [ ] Audit the populated workspace for tracked secrets, local runtime artifacts, and missing ignore rules before repository seeding.
-- [ ] Seed `Trollz1004/llc-crosslisting-os` from the populated LLC Crosslisting OS workspace without touching the reusable template repository.
-- [ ] Verify the private repository has a commit and excludes `.env`, tokens, cookies, local databases, and runtime logs.
-- [ ] Update the local setup prompt so Raycast knows the repository is seeded and can clone it without deleting an existing valid workspace.
+- [x] Add presence-only checks for local `.env`, Windows environment variables, and secure project configuration, reporting variable names and source location without values.
+- [x] Instruct Raycast to reuse existing configured credentials and stop before issuing replacements unless a named value is missing or invalid.
+- [x] Correct the local setup command names to match the repository scripts and require operator confirmation before any database migration.
+- [x] Audit the populated workspace for tracked secrets, local runtime artifacts, and missing ignore rules before repository seeding.
+- [x] Seed `Trollz1004/llc-crosslisting-os` from the populated LLC Crosslisting OS workspace without touching the reusable template repository.
+- [x] Verify the private repository has a commit and excludes `.env`, tokens, cookies, local databases, and runtime logs.
+- [x] Update the local setup prompt so Raycast knows the repository is seeded and can clone it without deleting an existing valid workspace.
